@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ai-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GOOGLE_VISION_API_KEY
+        sync: false
+
+  - type: static
+    name: ai-frontend
+    rootDir: .
+    buildCommand: ""
+    staticPublishPath: .
