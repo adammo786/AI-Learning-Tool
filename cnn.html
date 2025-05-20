@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Everyone - CNN & Object Detection</title>
+  <link rel="stylesheet" href="styles.css">
+  <button id="toggle-theme">Switch to Dark Theme</button>
+</head>
+<body class="light-theme">
+  <header>
+    <h1>AI for Everyone - Convolutional Neural Networks</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="beginner.html">Beginner AI</a>
+      <!-- <a href="quiz.html">Quiz</a> -->
+      <a href="cnn.html">CNN & Object Detection</a>
+         <a href="ml.html" class="me-3">Machine Learning</a>
+        <a href="chatbot.html">NLP</a>
+        <a href="https://forms.office.com/e/Y78h6wxJD4">
+  Feedback Survey &#x2197;
+</a>
+
+    </nav>
+    <button id="toggle-theme">Switch Theme</button>
+  </header>
+
+  <main>
+    <h2>Understanding Convolutional Neural Networks (CNNs)</h2>
+    <p>
+      CNNs are a type of artificial neural network specifically designed to process and analyse visual data. 
+      They are commonly used for image recognition, object detection, and facial recognition by identifying patterns 
+      such as edges, textures, and shapes in images.
+    </p>
+
+    <div class="feature-explanation bg-light p-4 rounded shadow mb-4">
+      <h2 class="mb-3"><i class="fa-solid fa-camera me-2"></i>Image Object Detection with CNN</h2>
+      
+      <div class="mb-4">
+        <h3 class="h5 text-primary">What It Is:</h3>
+        <p>Our object identifier uses a Convolutional Neural Network (CNN) to analyse images, detect objects, and classify them based on visual patterns like shapes and colours.</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="h5 text-primary">What You Can Learn:</h3>
+        <ul class="list-unstyled">
+          <li><i class="fa-solid fa-check text-success me-2"></i>How AI processes images to recognise objects</li>
+          <li><i class="fa-solid fa-check text-success me-2"></i>The concept of feature extraction, identifying specific patterns in visual data</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="h5 text-primary">Real-World Examples:</h3>
+        <ul class="list-unstyled">
+          <li><i class="fa-solid fa-arrow-right text-info me-2"></i>Self-driving cars detecting pedestrians and traffic signs</li>
+          <li><i class="fa-solid fa-arrow-right text-info me-2"></i>Medical imaging systems identifying tumors and abnormalities</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Object Detection Demo</h3>
+    <p>Upload an image, and the AI will attempt to identify objects using a pre-trained neural network:</p>
+
+    <input type="file" id="cnnImageUpload" accept="image/*"><br><br>
+    <img id="cnnImgPreview" src="" alt="Your image will appear here" style="max-width: 300px; display:none;" />
+    <p id="cnnResult"><em>Upload an image to begin analysis.</em></p>
+    <p id="cnnExplanation" style="margin-top: 20px; font-style: italic;"></p>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
