@@ -11,7 +11,7 @@ services:
       - key: GOOGLE_VISION_API_KEY
         sync: false
 
-  - type: static
+  - type: static_site
     name: ai-frontend
     rootDir: .
     buildCommand: ""
