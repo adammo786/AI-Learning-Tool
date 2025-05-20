@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner AI Concepts - AI for Everyone</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <button id="toggle-theme">Switch to Dark Theme</button>
+</head>
+<body class="light-theme">
+
+<header>
+  <h1>AI for Everyone</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="beginner.html">Beginner AI</a>
+    <a href="cnn.html">CNN & Object Detection</a>
+    <a href="ml.html" class="me-3">Machine Learning</a>
+    <a href="chatbot.html">NLP</a>
+    <a href="https://forms.office.com/e/Y78h6wxJD4">
+  Feedback Survey &#x2197;
+</a>
+
+
+  </nav>
+  <button id="toggle-theme">Switch Theme</button>
+</header>
+
+<main>
+  <section class="intro">
+    <h2>What is Artificial Intelligence?</h2>
+    <p>Artificial Intelligence (AI) is the ability of computers and machines to perform tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, and understanding language. Think of AI as the brain behind smart systems like Siri, Alexa, or even Netflix recommendations.</p>
+  </section>
+
+  <section class="content-section">
+    <h3>Key Concepts</h3>
+    <ul>
+      <li><strong>Machine Learning (ML):</strong> ML is a type of AI that allows systems to learn from data rather than being explicitly programmed. For example, a spam filter learns to identify spam emails by analysing patterns in thousands of previous emails.</li>
+      <li><strong>Deep Learning:</strong> A subset of ML that uses artificial neural networks to mimic the human brain. It can recognise patterns in large datasets, such as identifying faces in photos or translating languages.</li>
+      <li><strong>Neural Networks:</strong> Inspired by the structure of the human brain, neural networks are interconnected layers of nodes (like neurons) that process information and learn to recognise patterns, such as identifying objects in images.</li>
+      <li><strong>Natural Language Processing (NLP):</strong> This is how AI understands and processes human language. It powers chatbots, language translation, and even voice assistants like Siri and Alexa.</li>
+      <li><strong>Reinforcement Learning:</strong> A type of learning where an AI agent learns through trial and error, receiving rewards for correct actions. It's used in training robots and self-driving cars.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h3>Real-World Applications</h3>
+    <p>AI isn't just a futuristic concept. Here are some ways AI is already part of everyday life:</p>
+    <ul>
+      <li><strong>Voice Assistants:</strong> Siri, Alexa, and Google Assistant use AI to understand and respond to voice commands.</li>
+      <li><strong>Recommendations:</strong> Netflix and YouTube use AI to suggest videos based on your viewing history.</li>
+      <li><strong>Self-Driving Cars:</strong> AI analyses sensor data to make driving decisions, reducing the risk of accidents.</li>
+      <li><strong>Spam Filters:</strong> AI learns to detect and filter unwanted emails based on keywords and sender behaviour.</li>
+      <li><strong>Healthcare:</strong> AI analyses medical images to detect diseases like cancer at an early stage.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h3>Interactive Quiz</h3>
+    <p>Test your knowledge of AI concepts with the following questions:</p>
+    <form id="quizForm">
+      <div class="quiz-item">
+        <p>1. What is AI primarily designed to do?</p>
+        <label><input type="radio" name="q1" value="incorrect"> Solve mathematical problems only</label><br>
+        <label><input type="radio" name="q1" value="correct"> Perform tasks that typically require human intelligence</label><br>
+        <label><input type="radio" name="q1" value="incorrect"> Store large amounts of data</label><br>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item">
+        <p>2. What is the primary function of a Neural Network?</p>
+        <label><input type="radio" name="q2" value="incorrect"> Store and retrieve data</label><br>
+        <label><input type="radio" name="q2" value="correct"> Recognise patterns in data</label><br>
+        <label><input type="radio" name="q2" value="incorrect"> Create new data</label><br>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz-item">
+        <p>3. What is Reinforcement Learning commonly used for?</p>
+        <label><input type="radio" name="q3" value="correct"> Training AI agents through rewards and penalties</label><br>
+        <label><input type="radio" name="q3" value="incorrect"> Sorting data in databases</label><br>
+        <label><input type="radio" name="q3" value="incorrect"> Translating languages</label><br>
+        <p class="feedback"></p>
+      </div>
+
+      <button type="submit">Submit Quiz</button>
+      <div id="quizResult"></div>
+    </form>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
