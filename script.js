@@ -198,120 +198,73 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Calculate spam likelihood
-      let spamLikelihood;
-      if (matches === 0) {
-        spamLikelihood = 5;
-      } else if (matches === 1) {
-        spamLikelihood = 50;
-      } else if (matches === 2) {
-        spamLikelihood = 75;
+      // Simple scoring
+      let score = matches / spamKeywords.length;
+      let message = "";
+      if (score === 0) {
+        message = `<span class="text-success">Not Spam</span>`;
+      } else if (score < 0.1) {
+        message = `<span class="text-warning">Possibly Spam</span>`;
       } else {
-        spamLikelihood = 90;
+        message = `<span class="text-danger">Spam</span>`;
       }
 
-      // Create detailed result message
-      let resultHTML = '';
-      if (matches > 0) {
-        resultHTML = `
-          <div class="alert ${spamLikelihood >= 75 ? 'alert-danger' : 'alert-warning'}">
-            <h4 class="alert-heading">Spam Likelihood: ${spamLikelihood}%</h4>
-            <p>Detected spam keywords: ${Array.from(foundKeywords).join(", ")}</p>
-            <hr>
-            <p class="mb-0">The email contains ${matches} spam indicator${matches > 1 ? 's' : ''}.</p>
-          </div>
-        `;
-      } else {
-        resultHTML = `
-          <div class="alert alert-success">
-            <h4 class="alert-heading">Spam Likelihood: ${spamLikelihood}%</h4>
-            <p>No spam keywords detected. This email appears to be legitimate.</p>
-          </div>
-        `;
-      }
-
-      result.innerHTML = resultHTML;
-
-      // Scroll to result
-      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-
-    // Allow Enter key in textarea to check spam
-    emailInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault(); // Prevent new line
-        checkSpamButton.click();
-      }
-    });
-  }
-
-  // Add Quiz functionality
-  const quizForm = document.getElementById("quizForm");
-  const quizResult = document.getElementById("quizResult");
-
-  if (quizForm) {
-    quizForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      
-      // Correct answers
-      const correctAnswers = {
-        q1: "correct", // "Perform tasks that typically require human intelligence"
-        q2: "correct", // "Recognise patterns in data"
-        q3: "correct"  // "Training AI agents through rewards and penalties"
-      };
-
-      let score = 0;
-      let total = Object.keys(correctAnswers).length;
-
-      // Check each question
-      Object.keys(correctAnswers).forEach(question => {
-        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
-        const feedbackElement = document.querySelector(`input[name="${question}"]`).closest('.quiz-item').querySelector('.feedback');
-        
-        if (selectedAnswer) {
-          if (selectedAnswer.value === correctAnswers[question]) {
-            score++;
-            feedbackElement.textContent = "Correct! ✓";
-            feedbackElement.className = "feedback correct";
-          } else {
-            feedbackElement.textContent = "Incorrect. Try again! ✗";
-            feedbackElement.className = "feedback incorrect";
-          }
-        } else {
-          feedbackElement.textContent = "Please select an answer.";
-          feedbackElement.className = "feedback";
-        }
-      });
-
-      // Display final score
-      const percentage = (score / total) * 100;
-      quizResult.innerHTML = `
-        <div class="alert ${percentage === 100 ? 'alert-success' : 'alert-info'} mt-3">
-          <h4>Your Score: ${score}/${total} (${percentage}%)</h4>
-          <p>${getScoreMessage(percentage)}</p>
-        </div>
+      result.innerHTML = `
+        <p><strong>Result:</strong> ${message}</p>
+        <p><strong>Matched keywords:</strong> ${Array.from(foundKeywords).join(", ") || "None"}</p>
       `;
-
-      // Scroll to result
-      quizResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 
-  // Helper function for score messages
-  function getScoreMessage(percentage) {
-    if (percentage === 100) {
-      return "Excellent! You have a great understanding of AI concepts! 🌟";
-    } else if (percentage >= 66) {
-      return "Good job! You're getting there. Review the incorrect answers and try again. 👍";
-    } else if (percentage >= 33) {
-      return "Keep learning! Review the AI concepts and try again. 📚";
-    } else {
-      return "Take some time to review the AI concepts and try again. You can do it! 💪";
-    }
+  // Quiz functionality for beginner.html
+  const quizForm = document.getElementById("quizForm");
+  if (quizForm) {
+    quizForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let correct = 0;
+      const feedbacks = quizForm.querySelectorAll(".feedback");
+      feedbacks.forEach(fb => fb.textContent = "");
+
+      // Question 1
+      const q1 = quizForm.querySelector('input[name="q1"]:checked');
+      if (q1 && q1.value === "correct") {
+        correct++;
+        feedbacks[0].textContent = "Correct!";
+        feedbacks[0].className = "feedback correct";
+      } else {
+        feedbacks[0].textContent = "Incorrect. AI is designed to perform tasks that require human intelligence.";
+        feedbacks[0].className = "feedback incorrect";
+      }
+
+      // Question 2
+      const q2 = quizForm.querySelector('input[name="q2"]:checked');
+      if (q2 && q2.value === "correct") {
+        correct++;
+        feedbacks[1].textContent = "Correct!";
+        feedbacks[1].className = "feedback correct";
+      } else {
+        feedbacks[1].textContent = "Incorrect. Neural networks are used to recognise patterns in data.";
+        feedbacks[1].className = "feedback incorrect";
+      }
+
+      // Question 3
+      const q3 = quizForm.querySelector('input[name="q3"]:checked');
+      if (q3 && q3.value === "correct") {
+        correct++;
+        feedbacks[2].textContent = "Correct!";
+        feedbacks[2].className = "feedback correct";
+      } else {
+        feedbacks[2].textContent = "Incorrect. Reinforcement learning is used for training AI agents through rewards and penalties.";
+        feedbacks[2].className = "feedback incorrect";
+      }
+
+      const quizResult = document.getElementById("quizResult");
+      quizResult.innerHTML = `<strong>You got ${correct} out of 3 correct!</strong>`;
+    });
   }
 });
 
-// Helper function to convert image to Base64
+// Helper function for image upload
 function toBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
